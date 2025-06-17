@@ -1,7 +1,7 @@
 #!/usr/bin/python
-#~/workspace/examples/date_diff.py
+#~/workspace/Child-Age-Calculator_cli.py
 # by Shon Garrison
-# Created on August 1, 2012
+# Created on June 16, 2025
 
 import datetime, os
 
