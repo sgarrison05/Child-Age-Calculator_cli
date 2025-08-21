@@ -1,39 +1,44 @@
-#!/usr/bin/python
-#~/workspace/Child-Age-Calculator_cli.py
+#!/usr/bin/python3
 # by Shon Garrison
-# Created on June 16, 2025
+# Created on: Aug 21, 2025
+# Updated on: Aug 2025
 
-import datetime, os
+from datetime import date
+import os
 
 def get_birthdate():
+   # Calculate a person's birthdate 
+    today = date.today()
 
-    #get today's date:
-    today = datetime.date.today()
-    
+    # Clear the console screen for better readability
     if os.name == 'nt':
         _ = os.system('cls')
     else:
         _ = os.system('clear')
-        
-    print ("This application will calculate how a child is")
+    
+    print ("\nThis application will calculate how old you are")
     print ('\n')
     print ("Today is " + today.strftime("%m/%d/%y"))
     print ('\n')
 
     #get user input for each part of date variable and convert it's part to integer:
-    year = input("Please enter the birth year:  ")
-    year = int(year)
-    month = input("Please enter the birth month:  ")
-    month = int(month)
-    day = input("Please enter the day the child was born:  ")
-    day = int(day)
+    try:
+        year = input("Please enter your birth year:  ")
+        year = int(year)
+        month = input("Please enter your birth month:  ")
+        month = int(month)
+        day = input("Please enter the day you were born:  ")
+        day = int(day)
+    except ValueError:
+        print("\nInvalid input. Please enter numeric values for year, month, and day.")
+        return  
 
     #convert input variables to date
-    birth_date = datetime.date(year,month,day)
+    birth_date = date(year,month,day)
 
-    strBirth_Date = birth_date.strftime("%m/%d/%y")
+    strBirth_Date = birth_date.strftime("%m/%d/%Y")
     print ('\n')
-    print ("You entered " + strBirth_Date)
+    print ("You entered --> " + strBirth_Date)
     print ('\n')
 
     yearDays = 365.25
@@ -42,17 +47,11 @@ def get_birthdate():
     age = int((today - birth_date).days/yearDays)
 
     #convert to string and display
-    print ("The child is " + str(age) + " years old")
-    print ('\n')
+    print ("You are " + str(age) + " years old")
 
-#today = today.strftime("%m/%d/%y")
-# Start Program --------------------------------------------------
 
-def main():
-    print ('\n')
-    get_birthdate()
-    print ('\n')
-    
+# Run Application ===========================================================
 
-if __name__ == "__main__":
-    main()
+get_birthdate()
+
+print("\nNow Exiting the Application...\nGoodbye")
